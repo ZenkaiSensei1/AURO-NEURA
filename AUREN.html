@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b59">
+<title>GSarena - Spesifikasi</title>
+
+<style>
+:root {
+  --navy: #123b59;
+  --blue: #176b9b;
+  --cyan: #30b8d8;
+  --bg: #f2f5f7;
+  --card: #ffffff;
+  --text: #1e2933;
+  --muted: #687782;
+  --line: #dce4e9;
+  --soft: #eaf4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 15px #0002;
+}
+
+.navbar {
+  max-width: 1150px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo span { color: var(--cyan); }
+
+.logo small {
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.nav-links a:hover { color: var(--cyan); }
+
+.container {
+  max-width: 1150px;
+  margin: 25px auto;
+  padding: 0 18px;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.hero {
+  background: linear-gradient(125deg, #103752, #176b9b 65%, #2a9eb8);
+  color: white;
+  padding: 28px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 25px;
+  align-items: center;
+  animation: fadeUp .7s ease;
+}
+
+.eyebrow {
+  color: #a4edf5;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.1;
+  margin: 10px 0;
+}
+
+.hero p {
+  color: #d8edf5;
+  font-size: 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.chip {
+  border: 1px solid #ffffff55;
+  background: #ffffff12;
+  padding: 6px 10px;
+  border-radius: 30px;
+  font-size: 11px;
+}
+
+/* FOTO HP DARI FILE LOKAL */
+
+.phone-photo {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,.17),
+    transparent 72%
+  );
+}
+
+.phone-image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  max-height: 420px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px #0004);
+  animation: phoneAppear .8s ease both;
+  transition: transform .4s ease;
+}
+
+.phone-image:hover {
+  transform: scale(1.04) translateY(-4px);
+}
+
+@keyframes phoneAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quick-specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 18px 0 25px;
+}
+
+.quick-card {
+  background: white;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  animation: fadeUp .7s ease;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.quick-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px #123b5915;
+}
+
+.quick-card small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.quick-card strong {
+  display: block;
+  color: var(--navy);
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.sidebar {
+  background: white;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #536773;
+  border-left: 3px solid transparent;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: var(--soft);
+  color: var(--blue);
+  border-left-color: var(--cyan);
+}
+
+.search-box { margin-bottom: 15px; }
+
+.search-box input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 13px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #176b9b18;
+}
+
+.spec-section {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  animation: fadeUp .5s ease;
+}
+
+.section-title {
+  background: #f9fbfc;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-number {
+  background: var(--navy);
+  color: white;
+  min-width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.section-title h2 {
+  font-size: 15px;
+  color: var(--navy);
+  margin: 0;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.spec-table tr { border-bottom: 1px solid #edf1f3; }
+.spec-table tr:last-child { border-bottom: none; }
+
+.spec-table th,
+.spec-table td {
+  padding: 10px 13px;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.spec-table th {
+  width: 38%;
+  font-weight: normal;
+  color: #687782;
+}
+
+.spec-table td {
+  font-weight: 600;
+  color: #263b49;
+}
+
+.spec-table .subhead td {
+  background: var(--soft);
+  color: var(--navy);
+  font-weight: bold;
+}
+
+.hidden { display: none !important; }
+
+.no-results {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 25px 15px;
+  margin-top: 25px;
+  background: #e5edf1;
+  border-radius: 10px;
+}
+
+footer strong { color: var(--navy); }
+
+#backTop {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background: var(--navy);
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 50;
+}
+
+#backTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .navbar { padding: 12px 15px; }
+  .nav-links { display: none; }
+
+  .container {
+    padding: 0 11px;
+    margin-top: 15px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .phone-photo { min-height: 220px; }
+
+  .phone-image {
+    max-width: 280px;
+    max-height: 350px;
+  }
+
+  .quick-specs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
+  }
+
+  .quick-card { padding: 12px; }
+  .quick-card strong { font-size: 16px; }
+
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .section-title { padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="#" class="logo">
+      <span>AURO</span> NEURA
+      <small>TECHNICAL SPECIFICATIONS</small>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#overview">Ikhtisar</a>
+      <a href="#display">Layar</a>
+      <a href="#camera">Kamera</a>
+      <a href="#software">Software</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="breadcrumb">
+    Beranda / Smartphone / AURO NEURA / AUREN ONE Pro
+  </div>
+
+  <section class="hero" id="overview">
+    <div>
+      <div class="eyebrow">Smartphone Flagship</div>
+      <h1>AUREN ONE Pro</h1>
+
+      <p>
+        Smartphone flagship dari AURO NEURA dengan layar
+        LTPO AMOLED, chipset Dimensity 9500, serta sistem
+        kamera profesional beresolusi tinggi.
+      </p>
+
+      <div class="chips">
+        <span class="chip">Dimensity 9500</span>
+        <span class="chip">AMOLED 120Hz</span>
+        <span class="chip">Periskop 200MP</span>
+        <span class="chip">Baterai 5.200mAh</span>
+      </div>
+    </div>
+
+    <!-- FOTO LANGSUNG DARI FILE DI FOLDER YANG SAMA -->
+    <div class="phone-photo">
+      <img
+        src="auren one pro.png"
+        alt="AURO NEURA AUREN ONE Pro"
+        class="phone-image"
+        onerror="this.style.display='none'; document.getElementById('photoError').style.display='block';"
+      >
+      <p id="photoError" style="display:none;text-align:center;color:#d8edf5;font-size:13px">
+        Foto belum ditemukan.<br>
+        Pastikan file bernama <strong>auren-one-pro.png</strong>
+        berada di folder yang sama dengan HTML.
+      </p>
+    </div>
+  </section>
+
+  <section class="quick-specs">
+    <div class="quick-card">
+      <small>Ukuran layar</small>
+      <strong>6,87 inci</strong>
+    </div>
+    <div class="quick-card">
+      <small>Chipset</small>
+      <strong>Dimensity 9500</strong>
+    </div>
+    <div class="quick-card">
+      <small>Kamera utama</small>
+      <strong>50 MP</strong>
+    </div>
+    <div class="quick-card">
+      <small>Pengisian kabel</small>
+      <strong>120W</strong>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>Daftar Spesifikasi</h3>
+      <a href="#design">01. Desain dan Material</a>
+      <a href="#display">02. Layar</a>
+      <a href="#performance">03. Performa</a>
+      <a href="#memory">04. Memori</a>
+      <a href="#camera">05. Kamera Belakang</a>
+      <a href="#imaging">06. Foto dan Video</a>
+      <a href="#selfie">07. Kamera Depan</a>
+      <a href="#battery">08. Baterai</a>
+      <a href="#audio">09. Audio</a>
+      <a href="#software">10. Sistem Operasi</a>
+      <a href="#connectivity">11. Konektivitas</a>
+    </aside>
+
+    <div class="content">
+      <div class="search-box">
+        <input
+          type="search"
+          id="searchSpecs"
+          placeholder="Cari spesifikasi, misalnya RAM, OIS, Wi-Fi..."
+          aria-label="Cari spesifikasi"
+        >
+      </div>
+
+      <div class="no-results" id="noResults">
+        Spesifikasi tidak ditemukan.
+      </div>
+
+      <!-- 01 DESAIN -->
+      <section class="spec-section" id="design">
+        <div class="section-title"><span class="section-number">01</span><h2>Desain dan Material</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Dimensi</th><td>162,3 × 76,5 × 8,2 mm</td></tr>
+          <tr><th>Berat</th><td>212 gram</td></tr>
+          <tr><th>Material rangka</th><td>Grade 5 Titanium Frame</td></tr>
+          <tr><th>Material belakang</th><td>AG Matte Glass</td></tr>
+          <tr><th>Material layar</th><td>LTPO 3.0 AMOLED</td></tr>
+          <tr><th>Kaca pelindung belakang</th><td>Corning Gorilla Glass Victus 2</td></tr>
+          <tr><th>Ketahanan</th><td>IP68</td></tr>
+          <tr><th>Port</th><td>USB Type-C, SIM Tray, mikrofon</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 02 LAYAR -->
+      <section class="spec-section" id="display">
+        <div class="section-title"><span class="section-number">02</span><h2>Layar</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Jenis panel</th><td>AMOLED, LTPO 3.0</td></tr>
+          <tr><th>Ukuran</th><td>6,87 inci</td></tr>
+          <tr><th>Resolusi</th><td>QHD+ (1440 × 3088 piksel)</td></tr>
+          <tr><th>Rasio aspek</th><td>20:9</td></tr>
+          <tr><th>Kerapatan piksel</th><td>494 PPI</td></tr>
+          <tr><th>Refresh rate</th><td>120Hz</td></tr>
+          <tr><th>Adaptive refresh rate</th><td>1–120Hz</td></tr>
+          <tr><th>Touch sampling rate</th><td>480Hz</td></tr>
+          <tr><th>Kecerahan tipikal</th><td>1.200 nits</td></tr>
+          <tr><th>Kecerahan puncak</th><td>4.500 nits</td></tr>
+          <tr><th>Dolby Vision</th><td>Didukung</td></tr>
+          <tr><th>HDR10+</th><td>Didukung</td></tr>
+          <tr><th>Pelindung layar</th><td>Corning Gorilla Glass Victus 2</td></tr>
+          <tr><th>Always-On Display</th><td>Didukung</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 03 PERFORMA -->
+      <section class="spec-section" id="performance">
+        <div class="section-title"><span class="section-number">03</span><h2>Performa dan Chipset</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Chipset</th><td>MediaTek Dimensity 9500 (3nm)</td></tr>
+          <tr><th>CPU</th><td>Arm Cortex-X series dan Cortex-A efficiency</td></tr>
+          <tr><th>Arsitektur CPU</th><td>1 + 3 + 4 core</td></tr>
+          <tr><th>Jumlah core</th><td>Octa-core (8 core)</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 04 MEMORI -->
+      <section class="spec-section" id="memory">
+        <div class="section-title"><span class="section-number">04</span><h2>Memori dan Penyimpanan</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Kapasitas RAM</th><td>12GB / 16GB / 24GB</td></tr>
+          <tr><th>Jenis RAM</th><td>LPDDR5X</td></tr>
+          <tr><th>Penyimpanan</th><td>256GB / 512GB / 1TB</td></tr>
+          <tr><th>Jenis penyimpanan</th><td>UFS 4.1</td></tr>
+          <tr><th>Kecepatan baca</th><td>Hingga 4.200 MB/s</td></tr>
+          <tr><th>Kecepatan tulis</th><td>Hingga 3.800 MB/s</td></tr>
+          <tr><th>Slot microSD</th><td>Tidak tersedia</td></tr>
+          <tr><th>USB OTG</th><td>Didukung</td></tr>
+          <tr><th>Manajemen penyimpanan</th><td>AI-Powered Storage Defragmentation dan Dynamic File Compression</td></tr>
+          <tr class="subhead"><td colspan="2">Varian konfigurasi</td></tr>
+          <tr><th>Varian 1</th><td>12GB RAM + 256GB</td></tr>
+          <tr><th>Varian 2</th><td>16GB RAM + 512GB</td></tr>
+          <tr><th>Varian 3</th><td>24GB RAM + 1TB</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 05 KAMERA BELAKANG -->
+      <section class="spec-section" id="camera">
+        <div class="section-title"><span class="section-number">05</span><h2>Kamera Belakang</h2></div>
+        <table class="spec-table"><tbody>
+          <tr class="subhead"><td colspan="2">Kamera utama</td></tr>
+          <tr><th>Resolusi</th><td>50 MP</td></tr>
+          <tr><th>Ukuran sensor</th><td>1 inci</td></tr>
+          <tr><th>Jenis sensor</th><td>Sony LYT-900 / ISOCELL 1-inch Class</td></tr>
+          <tr><th>Ukuran piksel</th><td>1,6 μm native / 3,2 μm setelah binning</td></tr>
+          <tr><th>Aperture</th><td>Variabel f/1.6–f/4.0</td></tr>
+          <tr><th>Panjang fokus</th><td>23 mm ekuivalen</td></tr>
+          <tr><th>Stabilisasi</th><td>Sensor-Shift OIS Gen-2 dan 3D Ball-Bearing OIS</td></tr>
+          <tr><th>Autofokus</th><td>Dual Pixel PDAF dan Laser Autofocus</td></tr>
+          <tr><th>Teknologi sensor</th><td>Stacked CMOS, Stacked Transistor Pixel Technology, HDR Dual Gain</td></tr>
+          <tr><th>Pixel binning</th><td>4-in-1</td></tr>
+          <tr class="subhead"><td colspan="2">Kamera ultrawide</td></tr>
+          <tr><th>Resolusi</th><td>50 MP</td></tr>
+          <tr><th>Ukuran sensor</th><td>1/2,76 inci</td></tr>
+          <tr><th>Aperture</th><td>f/2.0</td></tr>
+          <tr><th>Sudut pandang</th><td>122°</td></tr>
+          <tr><th>Autofokus</th><td>Dual Pixel PDAF</td></tr>
+          <tr><th>Mode makro</th><td>Didukung</td></tr>
+          <tr class="subhead"><td colspan="2">Kamera periskop telefoto</td></tr>
+          <tr><th>Resolusi</th><td>200 MP</td></tr>
+          <tr><th>Ukuran sensor</th><td>1/1,4 inci</td></tr>
+          <tr><th>Aperture</th><td>f/2.6</td></tr>
+          <tr><th>Optical zoom</th><td>3,7× / 5×</td></tr>
+          <tr><th>Zoom tambahan</th><td>In-sensor lossless hingga 10×/12× dan AI Super Zoom hingga 100×</td></tr>
+          <tr><th>Stabilisasi</th><td>3-Axis OIS</td></tr>
+          <tr><th>Desain optik</th><td>Square Prism Lens Design</td></tr>
+          <tr><th>Konstruksi lensa</th><td>Multi-Element Glass Lens (1G + 6P), Ultra-Low Dispersion Glass, Anti-Reflective Coating</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 06 FOTOGRAFI -->
+      <section class="spec-section" id="imaging">
+        <div class="section-title"><span class="section-number">06</span><h2>Fotografi dan Videografi</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Resolusi foto maksimum</th><td>200 MP melalui kamera periskop; 50 MP kamera utama</td></tr>
+          <tr><th>Format foto</th><td>HEIF, JPEG, Ultra HDR</td></tr>
+          <tr><th>Format RAW</th><td>14-bit RAW, RAW+, ProRAW</td></tr>
+          <tr><th>Computational photography</th><td>AUREN Imaging Engine 3.0, Zero Shutter Lag, Multi-Frame HDR, Semantic Segmentation</td></tr>
+          <tr><th>Mode malam</th><td>Ultra Night Mode 3.0, Night Portrait, Astrophotography, Night Vision Video</td></tr>
+          <tr><th>Mode potret</th><td>Pro Portrait Mode, simulasi f/0.95–f/16, Natural Bokeh, 3D Portrait Lighting</td></tr>
+          <tr><th>Mode makro</th><td>Super Macro Mode, fokus minimum 2,5 cm</td></tr>
+          <tr><th>Panorama</th><td>Ultra-Wide Panorama hingga 360°</td></tr>
+          <tr><th>Mode profesional</th><td>Manual ISO, shutter speed, focus peaking, histogram, white balance</td></tr>
+          <tr><th>Kontrol video manual</th><td>Focus Peaking, Zebra Pattern, False Color</td></tr>
+          <tr><th>Mode LOG</th><td>A-Log dan 10-bit A-Log Pro</td></tr>
+          <tr><th>Profil warna</th><td>Rec.709, Rec.2020, DCI-P3, 10-bit Log</td></tr>
+          <tr><th>LUT bawaan</th><td>AUREN Film Look, Teal & Orange, Monochrome Noir, Vintage Film</td></tr>
+          <tr><th>Impor LUT</th><td>Didukung (.cube)</td></tr>
+          <tr><th>HDR video</th><td>Dolby Vision HDR, HDR10+, Smart HDR Video Engine</td></tr>
+          <tr><th>Resolusi video maksimum</th><td>8K (7680 × 4320)</td></tr>
+          <tr><th>Perekaman 4K</th><td>24 / 30 / 60 / 120 fps</td></tr>
+          <tr><th>Perekaman 8K</th><td>24 / 30 fps</td></tr>
+          <tr><th>Slow motion</th><td>1080p 240/480 fps; 720p 960 fps dengan AI Motion Interpolation</td></tr>
+          <tr><th>Dolby Vision recording</th><td>Hingga 4K 60 fps / 8K 30 fps</td></tr>
+          <tr><th>Rekaman 10-bit</th><td>10-bit 4:2:0 dan 10-bit Log</td></tr>
+          <tr><th>Codec video</th><td>H.264, H.265, AV1, ProRes 422 HQ via penyimpanan eksternal</td></tr>
+          <tr><th>Audio video</th><td>AAC-LC, LPCM 24-bit/96kHz, Spatial Audio 3D</td></tr>
+          <tr><th>Mikrofon</th><td>3-Microphone Array, AI Directional Noise Cancellation, Wind Noise Reduction</td></tr>
+          <tr><th>Stabilisasi video</th><td>Sensor-Shift OIS Gen-2 dan EIS 5.0 Ultra Steady Video</td></tr>
+          <tr><th>Mode sinematik</th><td>4K 24/30 fps, efek kedalaman bidang dan perpindahan fokus otomatis</td></tr>
+          <tr class="subhead"><td colspan="2">Fitur eksklusif</td></tr>
+          <tr><th>AI Studio Lighting</th><td>Pencahayaan studio berbasis komputasional</td></tr>
+          <tr><th>A-Log Pro Display Mode</th><td>Monitoring video LOG real-time dengan LUT</td></tr>
+          <tr><th>Instant Astrophotography</th><td>Fitur khusus pemotretan bintang</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 07 KAMERA DEPAN -->
+      <section class="spec-section" id="selfie">
+        <div class="section-title"><span class="section-number">07</span><h2>Kamera Depan</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Resolusi</th><td>50 MP</td></tr>
+          <tr><th>Jenis sensor</th><td>Sony IMX / ISOCELL Flagship Front Sensor</td></tr>
+          <tr><th>Ukuran sensor</th><td>1/2,76 inci</td></tr>
+          <tr><th>Aperture</th><td>f/2.0</td></tr>
+          <tr><th>Autofokus</th><td>Dual Pixel PDAF</td></tr>
+          <tr><th>Stabilisasi</th><td>EIS 5.0 Advanced Video Stabilization, tanpa OIS</td></tr>
+          <tr><th>Sudut pandang</th><td>90° FOV, Ultra-Wide Auto-Switching</td></tr>
+          <tr><th>Video maksimum</th><td>4K Ultra HD</td></tr>
+          <tr><th>Frame rate</th><td>4K 30/60 fps; 1080p 30/60/120 fps</td></tr>
+          <tr><th>HDR</th><td>Auto Ultra HDR, Dolby Vision hingga 4K 60 fps</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 08 BATERAI -->
+      <section class="spec-section" id="battery">
+        <div class="section-title"><span class="section-number">08</span><h2>Baterai dan Pengisian</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Kapasitas</th><td>5.200 mAh</td></tr>
+          <tr><th>Jenis baterai</th><td>Non-removable Lithium-Ion Polymer</td></tr>
+          <tr><th>Material kimia</th><td>Silicon-Carbon Anode Technology</td></tr>
+          <tr><th>Teknologi baterai</th><td>High-Density Dual-Cell Battery System dengan Smart Thermal Layer</td></tr>
+          <tr><th>Pengisian kabel</th><td>120W Ultra-Fast Flash Charge</td></tr>
+          <tr><th>Pengisian nirkabel</th><td>50W Wireless Fast Charging</td></tr>
+          <tr><th>Reverse wireless charging</th><td>10W</td></tr>
+          <tr><th>Reverse wired charging</th><td>15W Power Delivery melalui USB Type-C</td></tr>
+          <tr><th>Bypass charging</th><td>Didukung</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 09 AUDIO -->
+      <section class="spec-section" id="audio">
+        <div class="section-title"><span class="section-number">09</span><h2>Audio</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Speaker</th><td>Dual Symmetric Stereo Speakers</td></tr>
+          <tr><th>Konfigurasi</th><td>Dual Full-Range Drivers dengan Dedicated Acoustic Chamber</td></tr>
+          <tr><th>Sistem stereo</th><td>Stereo asimetris dinamis dengan Auto-Balancing Orientation</td></tr>
+          <tr><th>Teknologi speaker</th><td>NPU-Driven EQ Processing</td></tr>
+          <tr><th>Dolby Atmos</th><td>Didukung</td></tr>
+          <tr><th>Sertifikasi audio</th><td>Hi-Res Audio dan Hi-Res Audio Wireless</td></tr>
+          <tr><th>Audio nirkabel</th><td>Lossless Audio Wireless Transmission</td></tr>
+          <tr><th>Codec Bluetooth</th><td>LDAC, LHDC 5.0, aptX Lossless, aptX Adaptive, AAC, SBC, LC3</td></tr>
+          <tr><th>Jack 3,5 mm</th><td>Tidak tersedia</td></tr>
+          <tr><th>Mikrofon</th><td>3-Microphone Array dengan AI Noise Cancellation</td></tr>
+          <tr><th>Audio spasial</th><td>Head-Tracking Spatial Audio dan Real-time 3D Soundstage</td></tr>
+          <tr><th>Fitur eksklusif</th><td>AUREN Sound Matrix Engine</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 10 SOFTWARE -->
+      <section class="spec-section" id="software">
+        <div class="section-title"><span class="section-number">10</span><h2>Sistem Operasi dan Perangkat Lunak</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Antarmuka</th><td>AUREN Luma OS</td></tr>
+          <tr><th>Versi antarmuka</th><td>Luma OS 1.0</td></tr>
+          <tr><th>Versi Android</th><td>Android 17</td></tr>
+          <tr><th>Pembaruan OS</th><td>7 generasi Android</td></tr>
+          <tr><th>Pembaruan keamanan</th><td>8 tahun</td></tr>
+          <tr><th>Fitur AI</th><td>Luma AI, penerjemahan real-time, AI generatif, pengeditan foto/video, ringkasan dokumen, AI on-device</td></tr>
+          <tr><th>Asisten digital</th><td>AUREN Astra</td></tr>
+          <tr><th>Multitasking</th><td>Split Screen, Floating Windows, hingga 4 aplikasi aktif, App Pair</td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- 11 KONEKTIVITAS -->
+      <section class="spec-section" id="connectivity">
+        <div class="section-title"><span class="section-number">11</span><h2>Konektivitas</h2></div>
+        <table class="spec-table"><tbody>
+          <tr><th>Jaringan</th><td>GSM / HSPA / LTE / 5G SA/NSA, Sub-6 GHz, mmWave</td></tr>
+          <tr><th>2G</th><td>GSM 850 / 900 / 1800 / 1900 MHz</td></tr>
+          <tr><th>3G</th><td>HSDPA 850 / 900 / 1700 (AWS) / 1900 / 2100 MHz</td></tr>
+          <tr><th>4G LTE</th><td>Band 1/2/3/4/5/7/8/12/13/17/18/19/20/25/26/28/32/38/39/40/41/42/48/66</td></tr>
+          <tr><th>Teknologi LTE</th><td>4×4 MIMO, DL Cat 24</td></tr>
+          <tr><th>5G Sub-6 GHz</th><td>n1/n2/n3/n5/n7/n8/n12/n20/n25/n28/n38/n40/n41/n66/n75/n77/n78/n79</td></tr>
+          <tr><th>Jenis SIM</th><td>Dual Nano-SIM / eSIM</td></tr>
+          <tr><th>Dual SIM</th><td>DSDS / Dual 5G Active</td></tr>
+          <tr><th>eSIM</th><td>Mendukung beberapa profil eSIM</td></tr>
+          <tr><th>Wi-Fi</th><td>Wi-Fi 7 (802.11 a/b/g/n/ac/ax/be), 2,4/5/6GHz, MLO</td></tr>
+          <tr><th>Bluetooth</th><td>Bluetooth 5.4, A2DP, LE, aptX HD, aptX Adaptive, LDAC, LHDC 5.0</td></tr>
+          <tr><th>NFC</th><td>360° Omnidirectional NFC dengan eSE / Secure Element</td></tr>
+          <tr><th>GPS</th><td>Dual-band A-GPS (L1 + L5)</td></tr>
+          <tr><th>Sistem navigasi</th><td>Belum ditentukan</td></tr>
+          <tr><th>Port USB</th><td>USB Type-C</td></tr>
+          <tr><th>Versi USB</th><td>USB 3.2 Gen 2, hingga 10 Gbps, OTG</td></tr>
+        </tbody></table>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <strong>AURO NEURA — AUREN ONE Pro</strong>
+    <br>
+    Halaman konsep smartphone fiksi. Informasi spesifikasi berdasarkan rancangan pemilik.
+    <br>
+    © 2026 AURO NEURA Concept
+  </footer>
+
+</main>
+
+<button id="backTop" aria-label="Kembali ke atas">↑</button>
+
+<script>
+// PENCARIAN SPESIFIKASI
+const searchInput = document.getElementById("searchSpecs");
+const sections = document.querySelectorAll(".spec-section");
+const noResults = document.getElementById("noResults");
+
+searchInput.addEventListener("input", function () {
+  const query = this.value.toLowerCase().trim();
+  let totalVisible = 0;
+
+  sections.forEach(function (section) {
+    const rows = section.querySelectorAll("tbody tr");
+    let matchingRows = 0;
+
+    rows.forEach(function (row) {
+      const matched = row.textContent.toLowerCase().includes(query);
+      row.classList.toggle("hidden", !matched);
+
+      if (matched) matchingRows++;
+    });
+
+    const visible = matchingRows > 0;
+    section.classList.toggle("hidden", !visible);
+
+    if (visible) totalVisible++;
+  });
+
+  noResults.style.display = totalVisible ? "none" : "block";
+});
+
+// TOMBOL KEMBALI KE ATAS
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", function () {
+  backTop.classList.toggle("show", window.scrollY > 400);
+});
+
+backTop.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// NAVIGASI AKTIF
+const navItems = document.querySelectorAll(".sidebar a");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navItems.forEach(function (link) {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + entry.target.id
+          );
+        });
+      }
+    });
+  }, {
+    rootMargin: "-15% 0px -70% 0px"
+  });
+
+  sections.forEach(function (section) {
+    observer.observe(section);
+  });
+}
+</script>
+
+</body>
+</html>
